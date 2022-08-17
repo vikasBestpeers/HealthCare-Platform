@@ -1,0 +1,29 @@
+<h1>Please add details</h1>
+
+<%= form_with model: @doctor, url:  doctor_index_path , method: :post do |f| %>
+ <% if @doctor.experience==nil && @doctor.user_id==nil%>
+ 
+ <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+      <%= f.label :experience %><br />
+      <%= f.number_field :experience, in: 1.0..20.0, step: 1 %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :specialization %><br />
+      <%= f.select :specialization, ["Dermatologists", "Neurologists", "Ophthalmologists","Plastic Surgeons"]%>
+    </div>
+  <div class="actions">
+    <%= f.submit "update" %>
+  </div>
+<%end %>
+<% end %>
