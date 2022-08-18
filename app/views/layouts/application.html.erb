@@ -19,9 +19,11 @@
         <%= current_user.email%>
         <%= link_to "account setings",  edit_user_registration_path%>
         <%= link_to "log out", destroy_user_session_path, method: :delete%>
-      <%if current_user.role=='Doctor'%>
-      <% else %>
-      <%end%>
+        <%if current_user.role=='Doctor'%>
+        <% else %>
+          <%= link_to "Doctors",  patient_index_path%>
+          <%= link_to "my appointment", appointment_index_path%>
+        <%end%>
     <%end%>
     <%= yield %>
   </body>

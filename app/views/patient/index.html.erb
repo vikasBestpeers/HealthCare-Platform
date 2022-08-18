@@ -1,14 +1,23 @@
-<h1>welcome to patient page</h1>
 
 <h3> availeble doctors</h3>
 
+ <%=form_with url: search_path, method: :post do |form| %>
+  <div>
+        <%= form.label :search, "Search for:" %>
+      <%= form.select :role, ["Specialization", "Experience"]%>
+        <%= form.text_field :search %>
+        <td><%=form.submit "search"%></td>
+    </div>
+        <%end%>
+    
 <table>
     <tr>
         <th>s no. </th>
-        <th>name </th>
-        <th>surname </th>
-        <th>specialization </th>
-        <th>experience </th>
+        <th>Name </th>
+        <th>Surname </th>
+        <th>Specialization </th>
+        <th>Experience </th>
+        <th>Date & Time</th>
     </tr>    
      <% @doctors.each do |doctor| %>
     <tr>
@@ -18,14 +27,12 @@
         <td><%=doctor.specialization %></td>
         <td><%=doctor.experience %></td>
 
-
-        <%=form_with model: doctor, url:patient_index_path, method: :post do |form| %>
+        <%=form_with model: doctor, url: appointment_index_path, method: :post do |form| %>
+        <td><%= form.datetime_local_field :appointment_datetime %></td>
         <td><%= form.hidden_field :doctor_id,value: doctor.id%></td>
+
         <td><%=form.submit "Appoint"%></td>
         <%end%>
-
-        
-   <td> <%= button_to('Appoint', patient_index_path,  method: "post", data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %></td>
 
     </tr>
     <% end %>

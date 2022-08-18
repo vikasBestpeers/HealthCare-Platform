@@ -1,0 +1,23 @@
+<h3>result</h3>
+
+<table>
+    <tr>
+        <th>s no. </th>
+        <th>Name </th>
+        <th>Surname </th>
+        <th>Specialization </th>
+        <th>Experience </th>
+        </tr>    
+     <% @results.each do |doctor| %>
+    <tr>
+        <td><%=doctor.id %></td>
+        <td><%=doctor.name %></td>
+        <td><%=doctor.surname %></td>
+        <td><%=doctor.specialization %></td>
+        <td><%=doctor.experience %></td>
+
+
+    </tr>
+    <% end %>
+
+</table>

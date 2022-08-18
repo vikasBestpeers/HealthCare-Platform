@@ -1,0 +1,25 @@
+
+<h3> appointment book</h3>
+
+<table>
+    <tr>
+        <th>s no. </th>
+        <th>Name </th>
+        <th>Surname </th>
+        <th>Date & Time</th>
+    </tr>    
+     <% @appointments.each do |patient| %>
+     <% @patient=Patient.find_by_user_id(patient.user_id)%>
+     <% @user=User.find(patient.user_id)%>
+        <%if @patient!=nil %>
+    <tr>
+        <td><%=@patient.id %></td>
+        <td><%=@patient.name %></td>
+        <td><%=@patient.surname%></td>
+        <td><%=patient.appointment_datetime%></td>
+    </tr>
+    <% end %>
+    <% end %>
+
+</table>
+

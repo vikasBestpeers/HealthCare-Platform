@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :patient
   resources :doctor
+  resources :appointment
+  post '/search', to: "patient#search"
   # post "/details", to: "doctor#createdetails"
 end
