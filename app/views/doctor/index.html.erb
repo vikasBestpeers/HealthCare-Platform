@@ -1,25 +1,27 @@
+<h4 class="text-center"><%= @doctor.name%> <%= @doctor.surname%></h4>
 
-<h3> appointment book</h3>
-
-<table>
+<h5 class="text-uppercase"> appointments</h5>
+<table class="table table-striped jumbotron jumbotron-fluid">
+  <thead>
     <tr>
-        <th>s no. </th>
-        <th>Name </th>
-        <th>Surname </th>
-        <th>Date & Time</th>
-    </tr>    
-     <% @appointments.each do |patient| %>
-     <% @patient=Patient.find_by_user_id(patient.user_id)%>
-     <% @user=User.find(patient.user_id)%>
+      <th scope="col" class="text-center">s no.</th>
+      <th scope="col" class="text-center">Name </th>
+      <th scope="col" class="text-center">Surname </th>
+      <th scope="col" class="text-center">Date & Time </th>
+    </tr>
+  <tbody>
+  </thead>
+    <% @appointments.each do |patient| %>
+    <% @patient=Patient.find_by_user_id(patient.user_id)%>
+    <% @user=User.find(patient.user_id)%>
         <%if @patient!=nil %>
     <tr>
-        <td><%=@patient.id %></td>
-        <td><%=@patient.name %></td>
-        <td><%=@patient.surname%></td>
-        <td><%=patient.appointment_datetime%></td>
+      <th  class="text-center"scope="row"><%=@patient.id %></th>
+      <td class="text-center"><%=@patient.name %></td>
+      <td class="text-center"><%=@patient.surname%></td>
+      <td class="text-center"><%=patient.appointment_datetime%></td>
     </tr>
     <% end %>
     <% end %>
-
+  </tbody>
 </table>
-

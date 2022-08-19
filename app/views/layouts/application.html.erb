@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-light">
+  <header>
+    <%if user_signed_in? %>
+      <nav class="navbar navbar-light py-3" style="background-color: #e3f2fd;">
+      <%= current_user.email%>
+      <%= link_to "account setings",  edit_user_registration_path%>
+      <%if current_user.role=='Doctor'%>
+      <% else %>
+      <%= link_to "Doctors",  patient_index_path%>
+      <%= link_to "my appointment", appointment_index_path%>
+      <%end%>
+      <%= link_to "log out", destroy_user_session_path, method: :delete%>
+      </nav>
+    <%end%>
+  </header>
+    <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-     
-     
-      <%if user_signed_in? %>
-        <%= current_user.email%>
-        <%= link_to "account setings",  edit_user_registration_path%>
-        <%= link_to "log out", destroy_user_session_path, method: :delete%>
-        <%if current_user.role=='Doctor'%>
-        <% else %>
-          <%= link_to "Doctors",  patient_index_path%>
-          <%= link_to "my appointment", appointment_index_path%>
-        <%end%>
-    <%end%>
     <%= yield %>
+    </div>
   </body>
 </html>

@@ -11,8 +11,7 @@ class AppointmentController < ApplicationController
             redirect_to appointment_index_path
         end
     end
-    
-    
+        
     private
     def appointment_params
       params.require(:doctor).permit(:doctor_id,:appointment_datetime)

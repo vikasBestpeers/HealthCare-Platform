@@ -2,7 +2,7 @@
 <h3> availeble doctors</h3>
 
  <%=form_with url: search_path, method: :post do |form| %>
-  <div>
+  <div class="input-group mb-3">
         <%= form.label :search, "Search for:" %>
       <%= form.select :role, ["Specialization", "Experience"]%>
         <%= form.text_field :search %>
@@ -10,8 +10,8 @@
     </div>
         <%end%>
     
-<table>
-    <tr>
+<table class="jumbotron jumbotron-fluid">
+    <tr class="container">
         <th>s no. </th>
         <th>Name </th>
         <th>Surname </th>
@@ -38,4 +38,3 @@
     <% end %>
 
 </table>
-
