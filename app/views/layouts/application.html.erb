@@ -19,10 +19,14 @@
     <%if user_signed_in? %>
       <nav class="navbar navbar-light py-3" style="background-color: #e3f2fd;">
       <%= current_user.email%>
-      <%= link_to "account setings",  edit_user_registration_path%>
       <%if current_user.role=='Doctor'%>
+      <%= link_to "Home",  doctor_index_path%>
+      <%= link_to "account setings",  edit_user_registration_path%>
+      <%= link_to "Edit profile",  edit_doctor_path(current_user)%>
       <% else %>
-      <%= link_to "Doctors",  patient_index_path%>
+      <%= link_to "Home",  patient_index_path%>
+      <%= link_to "account setings",  edit_user_registration_path%>
+      <%= link_to "Edit profile",  edit_patient_path(current_user)%>
       <%= link_to "my appointment", appointment_index_path%>
       <%end%>
       <%= link_to "log out", destroy_user_session_path, method: :delete%>

@@ -1,0 +1,22 @@
+<h1>Edit profile details</h1>
+
+<%= form_with model: @details, url: patient_path(@details.id),method: :PATCH do |f| %>
+ <%if @details.name!=nil%>
+  <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "update" %>
+  </div>
+  <% else %>
+    <% render "/patient/new"%>
+  <%end%>
+ 
+<% end %>

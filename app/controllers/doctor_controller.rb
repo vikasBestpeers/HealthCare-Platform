@@ -24,18 +24,18 @@ class DoctorController < ApplicationController
 
 
     def edit
-        @details = User.find(params[:id])
+        @details = Doctor.find_by_user_id(params[:id])
     end
     
     def update
-        @user = User.find(params[:id])
-        if @user.update(doctor_params)
-          redirect_to seller_index_path
+
+        @doctor = Doctor.find(params[:id])
+        if @doctor.update(doctor_params)
+          redirect_to doctor_index_path
         else
           render :edit
         end
     end
-
 
     private
     def doctor_params

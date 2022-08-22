@@ -41,6 +41,19 @@ class PatientController < ApplicationController
         end
     end 
 
+    def edit
+        @details = Patient.find_by_user_id(params[:id])
+    end
+    
+    def update
+        @patient = Patient.find(params[:id])
+        if @patient.update(patient_params)
+          redirect_to patient_index_path
+        else
+          render :edit
+        end
+    end
+
     private
     def patient_params
       params.require(:patient).permit(:name,:surname)

@@ -1,23 +1,52 @@
-<h3> appointment is done</h3>
 
-<table>
-    <tr>
-        <th>dr. name </th>
-        <th>surname </th>
-        <th>specialization </th>
-        <th>experience </th>
-        <th>Date & Time</th>
+<h5 class="text-uppercase"> appointment is done</h5>
 
-    </tr>    
-    
+<table class="table table-striped jumbotron jumbotron-fluid">
+  <thead>
     <tr>
-        <td><%=@doctor.name %></td>
-        <td><%=@doctor.surname %></td>
-        <td><%=@doctor.specialization %></td>
-        <td><%=@doctor.experience %></td>
-        <td><%=@user.appointment_datetime %></td>
+      <th scope="col" class="text-center">s no.</th>
+      <th scope="col" class="text-center">dr. Name </th>
+      <th scope="col" class="text-center">Surname </th>
+      <th scope="col" class="text-center">Specialization </th>
+      <th scope="col" class="text-center">Experience</th>
+      <th scope="col" class="text-center">Date & Time </th>
     </tr>
-  
+  <tbody>
+  </thead>
+    <tr>
+      <th class="text-center"scope="row"><%=@doctor.id %></th>
+      <td class="text-center"><%=@doctor.name %></td>
+      <td class="text-center"><%=@doctor.surname %></td>
+      <td class="text-center"><%=@doctor.specialization %></td>
+      <td class="text-center"><%=@doctor.experience %></td>
+      <td class="text-center"><%=@user.appointment_datetime %></td>
 
+    </tr>
+  </tbody>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
