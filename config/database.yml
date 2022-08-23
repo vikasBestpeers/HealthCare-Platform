@@ -35,7 +35,7 @@ development:
 test:
   adapter: postgresql
   database: healthcare_test
-  pool: 5
+  pool: 5 
   timeout: 5000
 
 production:
