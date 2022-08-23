@@ -1,7 +1,11 @@
 class AppointmentController < ApplicationController
     def index
         @user=Appointment.find_by_user_id(current_user.id)
-        @doctor=Doctor.find(@user.doctor_id)
+        if @user!=nil
+            @doctor=Doctor.find(@user.doctor_id)
+        else
+            @doctor=nil
+        end
     end
     
     def create
