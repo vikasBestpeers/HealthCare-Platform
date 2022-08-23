@@ -15,7 +15,6 @@ class PatientController < ApplicationController
     def create
         @user=current_user 
         @patient=@user.patients.new(patient_params)
-        byebug
         if @patient.save
         redirect_to  patient_index_path
         else
