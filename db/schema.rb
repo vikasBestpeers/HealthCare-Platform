@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2022_08_17_105427) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "appointments", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "doctor_id"
     t.datetime "appointment_datetime"
     t.datetime "created_at", precision: 6, null: false
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_105427) do
     t.string "surname"
     t.string "specialization"
     t.integer "experience"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_doctors_on_user_id"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_08_17_105427) do
   create_table "patients", force: :cascade do |t|
     t.string "name"
     t.string "surname"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_patients_on_user_id"
