@@ -8,6 +8,7 @@
       <th scope="col" class="text-center">Name </th>
       <th scope="col" class="text-center">Surname </th>
       <th scope="col" class="text-center">Date & Time </th>
+      <th scope="col" class="text-center">Report </th>
     </tr>
   <tbody>
   </thead>
@@ -20,6 +21,11 @@
       <td class="text-center"><%=@patient.name %></td>
       <td class="text-center"><%=@patient.surname%></td>
       <td class="text-center"><%=patient.appointment_datetime%></td>
+      <%if patient.avatar.attached?%>
+      <td class="text-center"><%= link_to "view", download_path(patient.id), method: "GET"%></td>
+      <% else %>
+      <td class="text-center"><%="no report"%></td>
+    <% end %>
     </tr>
     <% end %>
     <% end %>

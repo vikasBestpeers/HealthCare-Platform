@@ -15,9 +15,14 @@ class AppointmentController < ApplicationController
             redirect_to appointment_index_path
         end
     end
-        
+
+    def download
+        @report=Appointment.find(params[:id])
+        @report.avatar.download
+    end
+
     private
     def appointment_params
-      params.require(:doctor).permit(:doctor_id,:appointment_datetime)
+      params.require(:doctor).permit(:doctor_id,:appointment_datetime,:avatar)
     end
 end

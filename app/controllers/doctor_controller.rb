@@ -1,11 +1,11 @@
 class DoctorController < ApplicationController
     def index
       @user=current_user
-        @doctor=Doctor.find_by_user_id(@user)
+      @doctor=Doctor.find_by_user_id(@user)
         if @doctor==nil
             redirect_to new_doctor_path
         end
-      @appointments=Appointment.where(doctor_id: @user.id)
+      @appointments=Appointment.where(doctor_id: @doctor.id)
     end
 
     def new

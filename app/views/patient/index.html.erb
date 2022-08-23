@@ -31,8 +31,10 @@
       <td class="text-center"><%=doctor.specialization %></td>
       <td class="text-center"><%=doctor.experience %></td>
 
+
         <%=form_with model: doctor, url: appointment_index_path, method: :post do |form| %>
         <td><%= form.datetime_local_field :appointment_datetime %></td>
+        <td><%= form.file_field :avatar %></td>
         <td><%= form.hidden_field :doctor_id,value: doctor.id%></td>
         <td><%=form.submit "Appoint"%></td>
         <%end%>
