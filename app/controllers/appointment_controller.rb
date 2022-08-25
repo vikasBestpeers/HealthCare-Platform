@@ -1,8 +1,9 @@
 class AppointmentController < ApplicationController
     def index
-        @user=Appointment.find_by_user_id(current_user.id)
-        if @user!=nil
-            @doctor=Doctor.find(@user.doctor_id)
+        @user=Appointment.where(user_id: current_user.id)
+        @user1=@user.first
+        if @user1!=nil
+            @doctor=Doctor.find(@user1.doctor_id)
         else
             @doctor=nil
         end
@@ -18,11 +19,11 @@ class AppointmentController < ApplicationController
 
     def download
         @report=Appointment.find(params[:id])
-        @report.avatar.download
+        send_data(@report.report.download)
     end
 
     private
     def appointment_params
-      params.require(:doctor).permit(:doctor_id,:appointment_datetime,:avatar)
+      params.require(:doctor).permit(:doctor_id,:appointment_datetime,:report)
     end
 end
