@@ -1,10 +1,5 @@
-<%if @doctor==nil%>
-<div class="alert alert-danger" role="alert">
-  <h4 class="alert-heading">No Appointment</h4>
-</div>
-
-<%else %>
-<h5 class="text-uppercase"> appointment is done</h5>
+<%if @appointments.present?%>
+  <h5 class="text-uppercase"> appointment is done</h5>
 
 <table class="table table-striped jumbotron jumbotron-fluid">
   <thead>
@@ -16,18 +11,30 @@
       <th scope="col" class="text-center">Experience</th>
       <th scope="col" class="text-center">Date & Time </th>
     </tr>
-  <tbody>
   </thead>
+  <tbody>
+    <%no=1%>
+    <% @appointments.each do |item| %>
+    <%@doctor=Doctor.find(item.doctor_id)%>
+    <%if @doctor.present?%>
     <tr>
-      <th class="text-center"scope="row"><%=@doctor.id %></th>
-      <td class="text-center"><%=@doctor.name %></td>
-      <td class="text-center"><%=@doctor.surname %></td>
-      <td class="text-center"><%=@doctor.specialization %></td>
-      <td class="text-center"><%=@doctor.experience %></td>
-      <td class="text-center"><%=@user.appointment_datetime %></td>
+        <th class="text-center"scope="row"><%=no %></th>
+        <td class="text-center"><%=@doctor.name %></td>
+        <td class="text-center"><%=@doctor.surname %></td>
+        <td class="text-center"><%=@doctor.specialization %></td>
+        <td class="text-center"><%=@doctor.experience %></td>
+        <td class="text-center"><%=item.appointment_datetime %></td>
     </tr>
+    <% end %>
+    <%no+=1%>
+    <% end %>
   </tbody>
 </table>
+
+<%else %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">No Appointment</h4>
+  </div>
 <% end %>
 
 

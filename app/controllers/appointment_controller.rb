@@ -1,10 +1,7 @@
 class AppointmentController < ApplicationController
     def index
-        @user=Appointment.where(user_id: current_user.id)
-        @user1=@user.first
-        if @user1!=nil
-            @doctor=Doctor.find(@user1.doctor_id)
-        else
+        @appointments=Appointment.where(user_id: current_user.id)
+        if @appointments.empty?
             @doctor=nil
         end
     end

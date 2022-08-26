@@ -1,8 +1,8 @@
 <%=form_with url: search_path, method: :post do |form| %>
   <div class="input-group mb-3">
         <%= form.label :search, "Search for:" %>
-        <%= form.select :role, ["Specialization", "Experience"]%>
-        <%= form.text_field :search %>
+        <%= form.select :role, ["Spe cialization", "Experience"]%>
+        <%= form.text_field :search%>
         <td><%=form.submit "search"%></td>
     </div>
         <%end%>
@@ -14,7 +14,7 @@
 <table class="table table-striped jumbotron jumbotron-fluid">
   <thead>
     <tr>
-      <th scope="col" class="text-center">s no.</th>
+      <th scope="col" class="text-center">sno.</th>
       <th scope="col" class="text-center">Name </th>
       <th scope="col" class="text-center">Surname </th>
       <th scope="col" class="text-center">Specialization </th>
@@ -23,14 +23,14 @@
     </tr>
   <tbody>
   </thead>
-        <% @doctors.each do |doctor| %>
+    <%no=1%>
+    <% @doctors.each do |doctor| %>
     <tr>
-      <th class="text-center"scope="row"><%=doctor.id %></th>
-      <td class="text-center"><%=doctor.name %></td>
-      <td class="text-center"><%=doctor.surname %></td>
-      <td class="text-center"><%=doctor.specialization %></td>
-      <td class="text-center"><%=doctor.experience %></td>
-
+        <th class="text-center"scope="row"><%=no %></th>
+        <td class="text-center"><%=doctor.name %></td>
+        <td class="text-center"><%=doctor.surname %></td>
+        <td class="text-center"><%=doctor.specialization %></td>
+        <td class="text-center"><%=doctor.experience %></td>
 
         <%=form_with model: doctor, url: appointment_index_path, method: :post do |form| %>
         <td><%= form.datetime_local_field :appointment_datetime %></td>
@@ -39,6 +39,7 @@
         <td><%=form.submit "Appoint"%></td>
         <%end%>
     </tr>
+      <%no+=1%>
     <% end %>
   </tbody>
 </table>
