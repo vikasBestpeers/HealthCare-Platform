@@ -1,35 +1,40 @@
 <h4 class="text-center"><%= @doctor.name%> <%= @doctor.surname%></h4>
-
-<h5 class="text-uppercase"> appointments</h5>
-<table class="table table-striped jumbotron jumbotron-fluid">
-  <thead>
-    <tr>
-      <th scope="col" class="text-center">s no.</th>
-      <th scope="col" class="text-center">Name </th>
-      <th scope="col" class="text-center">Surname </th>
-      <th scope="col" class="text-center">Date & Time </th>
-      <th scope="col" class="text-center">Old Report </th>
-    </tr>
-  <tbody>
-  </thead>
-    <%no=1%>
-    <% @appointments.each do |patient| %>
-    <% @patient=Patient.find_by_user_id(patient.user_id)%>
-    <% @user=User.find(patient.user_id)%>
-        <%if @patient!=nil %>
-    <tr>
-      <th class="text-center" scope="row"><%=no %></th>
-      <td class="text-center"><%=@patient.name %></td>
-      <td class="text-center"><%=@patient.surname%></td>
-      <td class="text-center"><%=patient.appointment_datetime%></td>
-      <%if patient.report.attached?%>
-      <td class="text-center"><%= link_to "download", download_path(patient.id)%></td>
-      <% else %>
-      <td class="text-center"><%="no report"%></td>
-    <% end %>
-    </tr>
-    <% end %>
-      <%no+=1%>
-    <% end %>
-  </tbody>
-</table>
+<% if @appointments.present?%>
+  <h5 class="text-uppercase"> appointments</h5>
+  <table class="table table-striped jumbotron jumbotron-fluid">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">s no.</th>
+        <th scope="col" class="text-center">Name </th>
+        <th scope="col" class="text-center">Surname </th>
+        <th scope="col" class="text-center">Date & Time </th>
+        <th scope="col" class="text-center">Old Report </th>
+      </tr>
+    <tbody>
+    </thead>
+      <%no=1%>
+      <% @appointments.each do |patient| %>
+      <% @patient=Patient.find_by_user_id(patient.user_id)%>
+      <% @user=User.find(patient.user_id)%>
+          <%if @patient!=nil %>
+      <tr>
+        <th class="text-center" scope="row"><%=no %></th>
+        <td class="text-center"><%=@patient.name %></td>
+        <td class="text-center"><%=@patient.surname%></td>
+        <td class="text-center"><%=patient.appointment_datetime%></td>
+        <%if patient.report.attached?%>
+        <td class="text-center"><%= link_to "download", download_path(patient.id)%></td>
+        <% else %>
+        <td class="text-center"><%="no report"%></td>
+      <% end %>
+      </tr>
+      <% end %>
+        <%no+=1%>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">No Appointment</h4>
+  </div>
+<% end %>
