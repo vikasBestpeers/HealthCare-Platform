@@ -1,21 +1,48 @@
-<h3>result</h3>
+<h5 class="text-uppercase"> Result</h5>
 
-<table>
+<table class="table table-striped jumbotron jumbotron-fluid">
+  <thead>
     <tr>
-        <th>s no. </th>
-        <th>Name </th>
-        <th>Surname </th>
-        <th>Specialization </th>
-        <th>Experience </th>
-        </tr>    
-     <% @results.each do |doctor| %>
-    <tr>
-        <td><%=doctor.id %></td>
-        <td><%=doctor.name %></td>
-        <td><%=doctor.surname %></td>
-        <td><%=doctor.specialization %></td>
-        <td><%=doctor.experience %></td>
+      <th scope="col" class="text-center">sno.</th>
+      <th scope="col" class="text-center">Name </th>
+      <th scope="col" class="text-center">Surname </th>
+      <th scope="col" class="text-center">Specialization </th>
+      <th scope="col" class="text-center">Experience</th>
     </tr>
+  <tbody>
+  </thead>
+    <%no=1%>
+    <% @results.each do |doctor| %>
+    <tr>
+        <th class="text-center"scope="row"><%=no %></th>
+        <td class="text-center"><%=doctor.name %></td>
+        <td class="text-center"><%=doctor.surname %></td>
+        <td class="text-center"><%=doctor.specialization %></td>
+        <td class="text-center"><%=doctor.experience %></td>
+    </tr>
+      <%no+=1%>
     <% end %>
-
+  </tbody>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

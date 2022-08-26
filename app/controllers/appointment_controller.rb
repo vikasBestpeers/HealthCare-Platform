@@ -9,7 +9,7 @@ class AppointmentController < ApplicationController
     def create
         @user=User.find(current_user.id)
         @appointment=@user.appointments.new(appointment_params)
-        if @appointment.save
+        if @appointment.save    
             redirect_to appointment_index_path
         end
     end

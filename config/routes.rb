@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :doctor
   resources :appointment
   get "/download/:id", to: 'appointment#download', as: "download"
-  post '/search', to: "patient#search"
+  post '/search', to: "patient#search", as: "search"
   # post "/details", to: "doctor#createdetails"
 end

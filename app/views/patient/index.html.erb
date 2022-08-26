@@ -1,7 +1,7 @@
 <%=form_with url: search_path, method: :post do |form| %>
   <div class="input-group mb-3">
         <%= form.label :search, "Search for:" %>
-        <%= form.select :role, ["Spe cialization", "Experience"]%>
+        <%= form.select :role, ["Specialization", "Experience"]%>
         <%= form.text_field :search%>
         <td><%=form.submit "search"%></td>
     </div>
